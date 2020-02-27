@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冒泡排序</title>
+</head>
+<body>
+<script>
+    var sourceArr = [4, 5, 6, 3, 2, 1];
+    // var sourceArr = [1, 2, 3, 4, 5, 6, 7];
+    // 普通冒泡排序，不论数组是否有序，都要走一遍
+    function bubbleSort1(arr) {
+        var num = 0;
+        for (let i = 0; i < arr.length; i++) {
+            for (j = 0; j < arr.length -i; j++) {
+                if (arr[j] > arr[j+1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                    num++;
+                }
+            }
+        }
+        console.log(num);
+    }
+    // 如果数组有序了，没有发生数据交换，说明可以提前结束循环
+    function bubbleSort2(arr) {
+        var num = 0;
+        for (let i = 0; i < arr.length; i++) {
+            var flag = false;
+            for (j = 0; j < arr.length -i; j++) {
+                if (arr[j] > arr[j+1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                    // 发生了数据交换
+                    flag = true;
+                    num++;
+                }
+            }
+            // 有序了提前退出
+            if (!flag) break;
+        }
+        console.log(num);
+    }
+    bubbleSort1(sourceArr);
+    console.dir(sourceArr);
+</script>
+</body>
+</html>
